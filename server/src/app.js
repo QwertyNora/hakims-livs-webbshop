@@ -9,20 +9,23 @@ const app = Express();
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
-  })
-);
+// TODO: Add our origin
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+//   })
+// );
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "Library API",
-    p: process.env.MONGODB_URI,
-  });
-});
+// TODO: Try TEST get req to our database
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Library API",
+//     p: process.env.CONNECTION_URI,
+//   });
+// });
 
-app.use("/api/v1/authors", authorRouter);
-app.use("/api/v1/books", bookRouter);
+// TODO: ADD OUR ROUTES.
+// app.use("/api/v1/authors", authorRouter);
+// app.use("/api/v1/books", bookRouter);
 
 module.exports = app;
