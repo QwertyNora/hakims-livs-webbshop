@@ -12,7 +12,7 @@ app.use(Express.urlencoded({ extended: true }));
 // TODO: Add our origin
 app.use(
   cors({
-    origin: ["http://localhost:3001", uri],
+    origin: ["http://localhost:3000", uri],
   })
 );
 
