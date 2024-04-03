@@ -28,3 +28,9 @@ How to start client LOCAL
 ## To start the client locally 
 
 1. cd hakims-livs-webbshop/client 
+
+2. npm install
+
+3. npm start
+
+4. client will start on the default browser
