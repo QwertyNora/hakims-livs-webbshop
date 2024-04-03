@@ -19,6 +19,12 @@ How to start client LOCAL
 
 6. git status ( should say "branch up to date" )
 
+## Start the server to get connect to DB
+1. Make sure your branch is up to date by running git status
+2.  cd hakims-livs-webbshop  
+3. npm install
+4. npm run dev 
+
 ## To start the client locally 
 
 1. cd hakims-livs-webbshop/client 
