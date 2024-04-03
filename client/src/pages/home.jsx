@@ -1,29 +1,53 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import type { MenuProps } from "antd";
-import {
-  Layout,
-  Menu,
-  Input,
-  Card,
-  Dropdown,
-  message,
-  Space,
-  Modal,
-} from "antd";
+import { Input, Card, Modal, Button, Dropdown, Space } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
-import {
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-  DownOutlined,
-} from "@ant-design/icons";
 import Styles from "../styles/home.module.css";
 
 const Search = Input.Search;
 const { Meta } = Card;
 
+const items = [
+  {
+    key: "1",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.antgroup.com"
+      >
+        1st menu item
+      </a>
+    ),
+  },
+  {
+    key: "2",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.aliyun.com"
+      >
+        2nd menu item
+      </a>
+    ),
+  },
+  {
+    key: "3",
+    label: (
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.luohanacademy.com"
+      >
+        3rd menu item
+      </a>
+    ),
+  },
+];
 function Home() {
+  // Product MODALS
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -37,25 +61,8 @@ function Home() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  // Product MODALS END
 
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    message.info(`Click on item ${key}`);
-  };
-
-  const items: MenuProps["items"] = [
-    {
-      label: "1st menu item",
-      key: "1",
-    },
-    {
-      label: "2nd menu item",
-      key: "2",
-    },
-    {
-      label: "3rd menu item",
-      key: "3",
-    },
-  ];
   return (
     <>
       {/* Top AD section */}
@@ -90,7 +97,7 @@ function Home() {
           </li>
           <li>
             <Link to="/Checkout" className={Styles.login}>
-              Kassan{" "}
+              Till kassan{" "}
             </Link>{" "}
           </li>
         </ul>
@@ -102,49 +109,62 @@ function Home() {
         <h2 className={Styles.herofont}>
           SAVE CASH <br /> Don't waste cash{" "}
         </h2>
-        {/* <button className={Styles.heroBtn}>Handla hos oss</button> */}
       </div>
 
-      {/* Product section */}
+      {/* category select dropdown */}
 
-      <div className={Styles.SideNav}>
-        <ul>
-          <h3 className={Styles.SideNavHeader}>Katergorier</h3>
-          <li>
-            <Dropdown
-              className={Styles.categoryDropdown}
-              menu={{ items, onClick }}
-            >
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  <p>Mat</p>
-                  <DownOutlined />
-                </Space>
-              </a>
-            </Dropdown>
-          </li>
-          <li>
-            <Dropdown menu={{ items, onClick }}>
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  <p>Drycker</p>
-                  <DownOutlined />
-                </Space>
-              </a>
-            </Dropdown>
-          </li>
-          <li>
-            <Dropdown menu={{ items, onClick }}>
-              <a onClick={(e) => e.preventDefault()}>
-                <Space>
-                  <p>Godis</p>
-                  <DownOutlined />
-                </Space>
-              </a>
-            </Dropdown>
-          </li>
-        </ul>
-        <div className={Styles.ProductDisplay}>
+      <div className={Styles.categoriesNavContainer}>
+        <div className={Styles.Dropdown}>
+          <h2 className={Styles.categoriesHeader}>Kategorier</h2>
+          <ul>
+            <li>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button>Snacks</Button>
+              </Dropdown>
+            </li>
+            <li>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button>Dryck</Button>
+              </Dropdown>
+            </li>
+            <li>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button>Träning & Hälsa</Button>
+              </Dropdown>
+            </li>
+            <li>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button>Skönhet & hälsa</Button>
+              </Dropdown>
+            </li>
+          </ul>
+        </div>
+
+        <div className={Styles.ProductDisplayContainer}>
           {/* Content for product display */}
           <div className={Styles.ProductDisplay}>
             <ul className={Styles.productCards}>
