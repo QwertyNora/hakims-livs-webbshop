@@ -150,6 +150,17 @@ function Home() {
                 <Button>Träning & Hälsa</Button>
               </Dropdown>
             </li>
+            <li>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button>Skönhet & hälsa</Button>
+              </Dropdown>
+            </li>
           </ul>
         </div>
 
