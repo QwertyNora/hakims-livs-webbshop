@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Card, Modal, Button } from "antd"; // Assuming you're using Ant Design components
+import { Card, Modal, Button } from "antd";
 import Styles from "../styles/getAllProducts.module.css";
 
-function GetAllProducts() {
-  const [getAllProducts, setgetAllProducts] = useState([]);
+function GetAllProducts({ selectedCategory }) {
+  const [allProducts, setAllProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8080/products")
       .then((response) => response.json())
-      .then((data) => setgetAllProducts(data))
+      .then((data) => {
+        setAllProducts(data);
+        if (selectedCategory) {
+          const filtered = data.filter(
+            (product) => product.category === selectedCategory
+          );
+          setFilteredProducts(filtered);
+        } else {
+          setFilteredProducts(data);
+        }
+      })
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [selectedCategory]);
 
   const showModal = (product) => {
     setSelectedProduct(product);
@@ -27,9 +38,11 @@ function GetAllProducts() {
     setIsModalOpen(false);
   };
 
+  const productsToDisplay = selectedCategory ? filteredProducts : allProducts;
+
   return (
     <div className={Styles.allProductsContainer}>
-      {getAllProducts.map((product) => (
+      {productsToDisplay.map((product) => (
         <Card
           className={Styles.productCard}
           key={product._id}
@@ -40,7 +53,6 @@ function GetAllProducts() {
               className={Styles.productImage}
               alt="example"
               src={product.imageURL}
-              // src="https://productimages.motatos.com/MS124361/ms124361-nat_rewater_max_brus_citrus_20_st_109gjpg.jpg?tr=w-264"
               onClick={() => showModal(product)}
             />
           }
@@ -58,7 +70,25 @@ function GetAllProducts() {
         okText="Lägg till i varukorg"
         cancelText="Stäng"
       >
-        <p>{selectedProduct && selectedProduct.price}kr</p>{" "}
+        {selectedProduct && (
+          <img
+            className={Styles.modalProductImg}
+            src={selectedProduct.imageURL}
+            alt=""
+          />
+        )}
+        <h2 className={Styles.modalPrice}>
+          {selectedProduct && selectedProduct.price}kr
+        </h2>
+        <p className={Styles.modalDesc}>
+          {selectedProduct && selectedProduct.brand}
+        </p>
+        <p className={Styles.modalDesc}>
+          {selectedProduct && selectedProduct.weight}g
+        </p>
+        <p className={Styles.modalDesc}>
+          {selectedProduct && selectedProduct.description}
+        </p>
       </Modal>
     </div>
   );

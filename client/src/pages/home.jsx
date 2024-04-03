@@ -11,6 +11,7 @@ const { Meta } = Card;
 function Home() {
   // Product MODALS
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -69,7 +70,7 @@ function Home() {
 
       <div className={Styles.Heroheader}>
         <h2 className={Styles.herofont}>
-          SAVE CASH <br /> Don't waste cash{" "}
+          SAVE CASH <br /> NOT waste{" "}
         </h2>
       </div>
 
@@ -80,31 +81,115 @@ function Home() {
           <h2 className={Styles.categoriesHeader}>Kategorier</h2>
           <ul>
             <li>
-              <a href="">Godis</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("");
+                }}
+              >
+                Alla
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d443e33d1b3eb0dab7769");
+                }}
+              >
+                Godis
+              </a>
             </li>
             <li>
-              <a href="">Mejeri</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4ddf597af06970c47adb");
+                }}
+              >
+                Mejeri
+              </a>
             </li>
             <li>
-              <a href="">Kött</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4e08597af06970c47adc");
+                }}
+              >
+                Kött
+              </a>
             </li>
             <li>
-              <a href="">Fisk</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4e25597af06970c47add");
+                }}
+              >
+                Fisk
+              </a>
             </li>
             <li>
-              <a href="">Bröd</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4e48597af06970c47ade");
+                }}
+              >
+                Bröd
+              </a>
             </li>
             <li>
-              <a href="">Grönsaker</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4e69597af06970c47adf");
+                }}
+              >
+                Grönsaker
+              </a>
             </li>
             <li>
-              <a href="">Frukt </a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4e89597af06970c47ae0");
+                }}
+              >
+                Frukt
+              </a>
             </li>
             <li>
-              <a href="">Kaffe</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("Kaffe");
+                }}
+              >
+                Kaffe
+              </a>
             </li>
             <li>
-              <a href="">Städartiklar</a>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCategory("660d4ea9597af06970c47ae1");
+                }}
+              >
+                Städartiklar
+              </a>
             </li>
           </ul>
         </div>
@@ -114,7 +199,7 @@ function Home() {
           <div className={Styles.ProductDisplay}>
             <ul className={Styles.productCards}>
               <li>
-                <GetAllProducts />
+                <GetAllProducts selectedCategory={selectedCategory} />
               </li>
             </ul>
           </div>

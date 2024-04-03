@@ -12,6 +12,13 @@ img {
   margin: 1rem;
 }
 
+.modalProductImg {
+  width: 300px;
+}
+.modalPrice {
+  padding-right: 20px;
+}
+
 /* Products button */
 
 .productBtn {
