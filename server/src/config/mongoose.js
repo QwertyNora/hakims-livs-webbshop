@@ -6,10 +6,10 @@ function connectToMongoose() {
   mongoose
     .connect(databaseURI)
     .then(() => {
-      console.log("Connected to the database successfully.");
+      console.log("Connected to db successfully");
     })
     .catch((error) => {
-      console.error("Could not connect to the database. Error:", error);
+      console.log("Could not connect to DB", databaseURI, error);
     });
 }
 
