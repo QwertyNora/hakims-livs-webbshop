@@ -8,6 +8,6 @@ const {
 const productsRouter = Express.Router();
 
 productsRouter.get("/", getProducts);
-productsRouter.get("/", createProduct);
+productsRouter.post("/new", createProduct);
 
 module.exports = productsRouter;
