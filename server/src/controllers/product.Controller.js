@@ -32,7 +32,6 @@ async function getProduct(req, res) {
 
 // Function to create a product
 async function createProduct(req, res) {
-  console.log("test");
   if (!req.body) {
     return res.status(400).json({
       error: "No body submitted",
