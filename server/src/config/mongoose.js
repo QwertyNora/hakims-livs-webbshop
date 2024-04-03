@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const databaseURI = process.env.MONGODB_URI;
+const databaseURI = process.env.CONNECTION_URI;
 
-function connectTomongoose() {
+function connectToMongoose() {
   mongoose
     .connect(databaseURI)
     .then(() => {
@@ -14,5 +14,5 @@ function connectTomongoose() {
 }
 
 module.exports = {
-  connectTomongoose,
+  connectToMongoose,
 };
