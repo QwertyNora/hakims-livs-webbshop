@@ -1,51 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Input, Card, Modal, Button, Dropdown, Space } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Input, Card, Modal, Button, Dropdown } from "antd";
+import GetAllProducts from "../api/getProducts";
 
 import Styles from "../styles/home.module.css";
 
 const Search = Input.Search;
 const { Meta } = Card;
 
-const items = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item
-      </a>
-    ),
-  },
-];
 function Home() {
   // Product MODALS
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -118,48 +80,31 @@ function Home() {
           <h2 className={Styles.categoriesHeader}>Kategorier</h2>
           <ul>
             <li>
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomLeft"
-                arrow
-              >
-                <Button>Snacks</Button>
-              </Dropdown>
+              <a href="">Godis</a>
             </li>
             <li>
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomLeft"
-                arrow
-              >
-                <Button>Dryck</Button>
-              </Dropdown>
+              <a href="">Mejeri</a>
             </li>
             <li>
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomLeft"
-                arrow
-              >
-                <Button>Träning & Hälsa</Button>
-              </Dropdown>
+              <a href="">Kött</a>
             </li>
             <li>
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomLeft"
-                arrow
-              >
-                <Button>Skönhet & hälsa</Button>
-              </Dropdown>
+              <a href="">Fisk</a>
+            </li>
+            <li>
+              <a href="">Bröd</a>
+            </li>
+            <li>
+              <a href="">Grönsaker</a>
+            </li>
+            <li>
+              <a href="">Frukt </a>
+            </li>
+            <li>
+              <a href="">Kaffe</a>
+            </li>
+            <li>
+              <a href="">Städartiklar</a>
             </li>
           </ul>
         </div>
@@ -169,117 +114,7 @@ function Home() {
           <div className={Styles.ProductDisplay}>
             <ul className={Styles.productCards}>
               <li>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://productimages.motatos.com/MS124361/ms124361-nat_rewater_max_brus_citrus_20_st_109gjpg.jpg?tr=w-264"
-                      onClick={showModal}
-                    />
-                  }
-                >
-                  <Meta title="Trocadero" />
-                  <p>10kr</p>
-                  <button className={Styles.productBtn}>KÖP</button>
-                </Card>
-                <Modal
-                  title="product-modal"
-                  visible={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                  okText="Lägg till i varukorg"
-                  cancelText="Stäng"
-                >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                </Modal>
-              </li>
-              <li>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://productimages.motatos.com/MS216891/trocamustzero-af7ef081-771f-4bfc-8698-181524ebe903.jpg?tr=w-264"
-                      onClick={showModal}
-                    />
-                  }
-                >
-                  <Meta title="Trocadero" />
-                  <p>10kr</p>
-                  <button className={Styles.productBtn}>KÖP</button>
-                </Card>
-
-                <Modal
-                  title="product-modal"
-                  visible={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                </Modal>
-              </li>
-              <li>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://productimages.motatos.com/MS112346/cocacolavanilla-da7e0713-2055-4f70-bb85-61c9d59b83ba.png?tr=w-264"
-                      onClick={showModal}
-                    />
-                  }
-                >
-                  <Meta title="Trocadero" />
-                  <p>10kr</p>
-                  <button className={Styles.productBtn}>KÖP</button>
-                </Card>
-
-                <Modal
-                  title="product-modal"
-                  visible={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                </Modal>
-              </li>
-              <li>
-                <Card
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://productimages.motatos.com/MS216891/trocamustzero-af7ef081-771f-4bfc-8698-181524ebe903.jpg?tr=w-264"
-                      onClick={showModal}
-                    />
-                  }
-                >
-                  <Meta title="Trocadero" />
-                  <p>10kr</p>
-                  <button className={Styles.productBtn}>KÖP</button>
-                </Card>
-
-                <Modal
-                  title="product-modal"
-                  visible={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                </Modal>
+                <GetAllProducts />
               </li>
             </ul>
           </div>
