@@ -21,12 +21,10 @@ app.use(
 );
 
 // TODO: Try TEST get req to our database
-app.get("/", (req, res) => {
-  res.json({
-    message: "Products API",
-    p: process.env.MONGODB_CONNECT_URI,
+
+  app.get("/", (req, res) => {
+    res.send("Hello");
   });
-});
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
