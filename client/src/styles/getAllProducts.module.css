@@ -4,6 +4,10 @@
   flex-wrap: wrap;
 }
 
+img {
+  padding-top: 20px;
+}
+
 .productCard {
   margin: 1rem;
 }

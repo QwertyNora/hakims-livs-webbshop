@@ -37,8 +37,10 @@ function GetAllProducts() {
           style={{ width: 240 }}
           cover={
             <img
+              className={Styles.productImage}
               alt="example"
-              src="https://productimages.motatos.com/MS124361/ms124361-nat_rewater_max_brus_citrus_20_st_109gjpg.jpg?tr=w-264"
+              src={product.imageURL}
+              // src="https://productimages.motatos.com/MS124361/ms124361-nat_rewater_max_brus_citrus_20_st_109gjpg.jpg?tr=w-264"
               onClick={() => showModal(product)}
             />
           }
