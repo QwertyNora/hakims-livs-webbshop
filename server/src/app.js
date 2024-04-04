@@ -8,10 +8,17 @@ const app = Express();
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
+const allowedOrigins = ['http://localhost:3000', 'https://hakims-livs-webbshop-1.onrender.com/'];
 // TODO: Add our origin
 app.use(
   cors({
-    origin: ["http://localhost:3000", "*"],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
   })
 );
 
