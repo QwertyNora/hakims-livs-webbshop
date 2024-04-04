@@ -11,10 +11,7 @@ app.use(Express.urlencoded({ extended: true }));
 // TODO: Add our origin
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://hakims-livs-webbshop-1.onrender.com",
-    ],
+    origin: ["http://localhost:3000", "*"],
   })
 );
 
