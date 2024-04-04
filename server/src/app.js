@@ -14,7 +14,6 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      uri,
       "https://hakims-livs-webbshop-1.onrender.com",
     ],
   })
@@ -22,9 +21,9 @@ app.use(
 
 // TODO: Try TEST get req to our database
 
-  app.get("/", (req, res) => {
-    res.send("Hello");
-  });
+app.get("/", (req, res) => {
+  res.send("Hello");
+});
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
