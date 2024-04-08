@@ -4,6 +4,8 @@
 
 https://hakims-livs-webbshop-2.onrender.com/
 
+## BRANCH thats for tester " branch-for-testers"
+
 ## How to start the SERVER / backend
 
 1. navigate to the server cd
