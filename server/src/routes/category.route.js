@@ -7,6 +7,6 @@ const {
 
 const categoriesRouter = Express.Router();
 
-categoriesRouter.get("/categories", getCategories);
+categoriesRouter.get("/", getCategories);
 
 module.exports = categoriesRouter;
