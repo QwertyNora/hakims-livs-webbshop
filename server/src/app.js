@@ -3,7 +3,7 @@ const Express = require("express");
 const cors = require("cors");
 const productsRouter = require("./routes/product.route");
 const adminProductRouter = require("./routes/adminProducts.route");
-
+const categoriesRouter = require("./routes/category.route");
 const app = Express();
 
 app.use(Express.json());
@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/admin/add", adminProductRouter);
 app.use("/api/admin/products", adminProductRouter); //Test för lösning
+app.use("/categories", categoriesRouter);
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
