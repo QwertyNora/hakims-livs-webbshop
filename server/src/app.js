@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 app.use("/api/admin/add", adminProductRouter);
 app.use("/api/admin/products", adminProductRouter); //Test för lösning
 app.use("/categories", categoriesRouter);
+app.use("/categories/new", categoriesRouter);
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
