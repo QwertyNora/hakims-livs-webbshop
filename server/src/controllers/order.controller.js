@@ -41,8 +41,19 @@ async function createOrder(req, res) {
 //Function for getting all orders in system
 async function getAllOrders(req, res) {
     try {
-        const orders = await Order.find(); 
-        res.status(200).json(orders); 
+        const orders = await Order.find().populate({
+            path: 'products.productId',
+            select: 'title'
+        });
+        const formattedOrders = orders.map(order => ({
+            ...order.toObject(),
+            products: order.products.map(p => ({
+                quantity: p.quantity,
+                unitPrice: p.unitPrice,
+                title: p.productId.title 
+            }))
+        }));
+        res.status(200).json(formattedOrders);
     } catch (error) {
         console.error("Error retrieving orders", error);
         res.status(500).json({
@@ -51,6 +62,21 @@ async function getAllOrders(req, res) {
         });
     }
 };
+
+
+
+// async function getAllOrders(req, res) {
+//     try {
+//         const orders = await Order.find(); 
+//         res.status(200).json(orders); 
+//     } catch (error) {
+//         console.error("Error retrieving orders", error);
+//         res.status(500).json({
+//             message: "Error retrieving orders",
+//             error: error.message,
+//         });
+//     }
+// };
 
 
 //Function to update status on order ("Ordered", "In progress", "Out for delivery", "Delivered")
