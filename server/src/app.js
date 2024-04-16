@@ -28,6 +28,8 @@ app.use("/api/admin/add", adminProductRouter);
 app.use("/admin", adminProductRouter);
 app.use("/categories", categoriesRouter);
 app.use("/orders", orderRouter);
+app.use("/categories/new", categoriesRouter);
+
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
