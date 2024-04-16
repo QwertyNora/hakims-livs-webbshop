@@ -64,21 +64,6 @@ async function getAllOrders(req, res) {
 };
 
 
-
-// async function getAllOrders(req, res) {
-//     try {
-//         const orders = await Order.find(); 
-//         res.status(200).json(orders); 
-//     } catch (error) {
-//         console.error("Error retrieving orders", error);
-//         res.status(500).json({
-//             message: "Error retrieving orders",
-//             error: error.message,
-//         });
-//     }
-// };
-
-
 //Function to update status on order ("Ordered", "In progress", "Out for delivery", "Delivered")
 async function updateOrderStatus(req, res) {
     const orderId = req.params.id;  
