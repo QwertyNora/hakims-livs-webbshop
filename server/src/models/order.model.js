@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const productOrderSchema = new mongoose.Schema({
     productId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'Product'
     },
     quantity: {
@@ -21,8 +20,15 @@ const orderSchema = new mongoose.Schema({
     products: [productOrderSchema],
     status: {
         type: String,
-        enum: ["Beställd", "Plockas", "Ute för leverans", "Levererad"],
-        default: "Beställd"
+        enum: ["Ordered", "In progress", "Out for delivery", "Delivered"],
+        default: "Ordered"
+    },
+    customer: {  
+        name: { type: String, required: true },
+        email: { type: String, required: true },
+        phoneNumber: { type: String, required: true },
+        address: { type: String, required: true },
+        invoiceAddress: { type: String, required: true }
     }
 }, {
     timestamps: true, 
@@ -36,8 +42,5 @@ orderSchema.virtual('totalPrice').get(function () {
     }, 0);
 });
 
-
-
-const orderList = mongoose.model("Orders", orderSchema);
-
-module.exports = orderList;
+const Order = mongoose.model("Orders", orderSchema);
+module.exports = Order;
