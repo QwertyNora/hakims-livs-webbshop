@@ -4,6 +4,7 @@ const cors = require("cors");
 const productsRouter = require("./routes/product.route");
 const adminProductRouter = require("./routes/adminProducts.route");
 const categoriesRouter = require("./routes/category.route");
+const orderRouter = require("./routes/order.route");
 const app = Express();
 
 app.use(Express.json());
@@ -24,8 +25,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/admin/add", adminProductRouter);
-app.use("/api/admin/products", adminProductRouter); //Test för lösning
+app.use("/admin", adminProductRouter);
 app.use("/categories", categoriesRouter);
+app.use("/orders", orderRouter);
 
 // TODO: ADD OUR ROUTES.
 app.use("/products", productsRouter);
