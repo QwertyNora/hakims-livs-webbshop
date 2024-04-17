@@ -3,9 +3,9 @@ const { adminProductErrorHandler } = require("../utils/apiHelpers");
 
 //Function to add new products to inventory
 async function addProductToInventory(req, res) {
-  if (!req.body) {
+  if (!req.body || !req.body.comparisonSpire || !req.body.unitType) {
     return res.status(400).json({
-      error: "No body submitted",
+      error: "All fields must be submitted",
     });
   }
   try {
@@ -20,6 +20,7 @@ async function addProductToInventory(req, res) {
     });
   }
 }
+
 
 // Funktion för att uppdatera en produkt i inventariet
 async function updateProductInInventory(req, res) {
