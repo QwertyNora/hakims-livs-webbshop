@@ -13,8 +13,6 @@ const productSchema = new mongoose.Schema({
   imageURL: { type: String, required: true },
   weight: { type: Number, required: true },
   description: { type: String, required: true },
-  unitType: { type: String, required: true, enum: ['st', 'kilo', 'liter', 'gram'] } ,
-  comparisonPrice: { type: String, required: true }
 });
 
 const Product = mongoose.model("Product", productSchema);
